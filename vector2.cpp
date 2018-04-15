@@ -11,11 +11,13 @@ vector2::vector2(float x, float y){
 	y_0 = y;
 }
 vector2::vector2(const vector2& other){
+	// можно убрать. компилятор сам такое сгенерирует
 	x_0 = (other.x_0);
 	y_0 = (other.y_0);
 }
 vector2::~vector2()
 {
+	// деструктор не обязательно самим реализовывать в данном случае (отладочный вывод не обязателен)
 	std::cout << "destructor" <<std::endl;
 }
 
@@ -40,6 +42,7 @@ std::istream& operator>>(std::istream& stream,  vector2& v)
 }
 const vector2& vector2::operator=(const vector2&other) 
 {
+	// компилятор сам такой operator= сгенерирует
 	x_0 = other.x_0;
 	y_0 = other.y_0;
 	return *this;
@@ -65,6 +68,7 @@ vector2 vector2::operator-(const vector2&other) const {
 }
 float vector2::len() const
 {
+	// fixit: чтобы не дублировать код можно написать так: return sqrt(squareLen());
 	return sqrt(x_0 * x_0 + y_0  * y_0);
 }
 
@@ -84,6 +88,9 @@ vector2& vector2::norm() {
 	}
 	else
 	{
+		// fixit:
+		// лучше так: float invLen = 1.0f / len(); 
+		// x_0 *= invLen; y_0 *= invLen;
 		float a = x_0;
 		x_0 = x_0 / sqrt(x_0 * x_0 + y_0 * y_0);
 		y_0 = y_0 / sqrt(a * a + y_0 * y_0);
@@ -123,6 +130,7 @@ vector2 vector2::rotate(float angle)
 }
 vector2 vector2::getRotate(float angle) const
 {
+	// fixit: у вас rotate и getRotated делают по сути одно и то же
 	vector2 getrotate = *this;
 	getrotate.rotate(angle);
 	return getrotate;
