@@ -69,6 +69,7 @@ int main()
 			case sf::Event::KeyPressed:
 			{
 				sf::Vector2f pos = circle.getPosition();
+				// лучше использовать window.getSize().x вместо 800 ... то же касается вертикального размера
 				if (pos.x >= 0 && pos.x <= 800) {
 					if (event.key.code == sf::Keyboard::Left) {
 						circle.move(-1, 0);
