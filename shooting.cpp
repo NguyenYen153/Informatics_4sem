@@ -70,7 +70,7 @@ int main()
 			{
 				sf::Vector2f pos = circle.getPosition();
 				// лучше использовать window.getSize().x вместо 800 ... то же касается вертикального размера
-				if (pos.x >= 0 && pos.x <= 800) {
+				if (pos.x >= 0 && pos.x <= window.getSize().x) {
 					if (event.key.code == sf::Keyboard::Left) {
 						circle.move(-1, 0);
 					}
@@ -78,7 +78,7 @@ int main()
 						circle.move(1, 0);
 					}
 				}
-				if (pos.y >= 0 && pos.y <= 600) {
+				if (pos.y >= 0 && pos.y <= window.getSize().y) {
 					if (event.key.code == sf::Keyboard::Up) {
 						circle.move(0, -1);
 					}
@@ -88,11 +88,11 @@ int main()
 				}
 				if (pos.x < 0)
 					circle.move(1, 0);
-				if (pos.x > 800)
+				if (pos.x > window.getSize().x)
 					circle.move(-1, 0);
 				if (pos.y < 0)
 					circle.move(0, 1);
-				if (pos.y > 600)
+				if (pos.y > window.getSize().y)
 					circle.move(0, -1);
 				std::cout << pos.x << pos.y;
 			}
